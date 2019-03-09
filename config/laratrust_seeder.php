@@ -11,7 +11,10 @@ return [
             'users' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
-        'user' => [
+        'non_profit_organization' => [
+            'profile' => 'r,u'
+        ],
+        'advertiser' => [
             'profile' => 'r,u'
         ],
     ],
