@@ -21,7 +21,7 @@ class CreateNonProfitOrganizationsTable extends Migration
             $table->string('address');
             $table->string('phone_no', 20);
             $table->string('email');
-            $table->integer('balance');
+            $table->integer('balance')->default(0);
             $table->timestamps();
 
             $table->foreign('manager_id')->references('id')->on('users')

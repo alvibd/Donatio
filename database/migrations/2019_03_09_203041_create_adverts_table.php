@@ -21,8 +21,8 @@ class CreateAdvertsTable extends Migration
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->string('file_name');
-            $table->integer('balance');
-            $table->integer('view_count');
+            $table->integer('balance')->default(0);
+            $table->integer('view_count')->default(0);
             $table->string('status', 10);
             $table->timestamps();
 
