@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('page_title', "Dashboard")
+
 @section('content')
 <!-- Widgets -->
 <div class="row clearfix">
@@ -305,3 +307,26 @@
     <!-- #END# Browser Usage -->
 </div>
 @endsection
+@push('push_stylesheets')
+    <!-- Morris Chart Css-->
+    <link href="{{ asset('admin/plugins/morrisjs/morris.css')}}" rel="stylesheet" />
+@endpush
+@push('push_javascripts')
+
+    <!-- Morris Plugin Js -->
+    <script src="{{ asset('admin/plugins/raphael/raphael.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/morrisjs/morris.js') }}"></script>
+
+    <!-- ChartJs -->
+    <script src="{{ asset('admin/plugins/chartjs/Chart.bundle.js') }}"></script>
+
+    <!-- Flot Charts Plugin Js -->
+    <script src="{{ asset('admin/plugins/flot-charts/jquery.flot.js') }}"></script>
+    <script src="{{ asset('admin/plugins/flot-charts/jquery.flot.resize.js') }}"></script>
+    <script src="{{ asset('admin/plugins/flot-charts/jquery.flot.pie.js') }}"></script>
+    <script src="{{ asset('admin/plugins/flot-charts/jquery.flot.categories.js') }}"></script>
+    <script src="{{ asset('admin/plugins/flot-charts/jquery.flot.time.js') }}"></script>
+
+    <!-- Sparkline Chart Plugin Js -->
+    <script src="{{ asset('admin/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
+@endpush

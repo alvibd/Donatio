@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>@@yield('page_title')</title>
+    <title>@yield('page_title')</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -73,7 +73,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>yield('page_title')</h2>
+                <h2>@yield('page_title')</h2>
             </div>
 
             @section('error_message')
@@ -143,7 +143,7 @@
         <!-- Demo Js -->
         <script src="{{ asset('admin/js/demo.js') }}"></script>
     @show
-    @stack('push_javascript')
+    @stack('push_javascripts')
 </body>
 
 </html>
