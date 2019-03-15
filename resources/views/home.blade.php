@@ -328,6 +328,7 @@
     <link href="{{ asset('admin/plugins/morrisjs/morris.css')}}" rel="stylesheet"/>
 @endpush
 @push('push_javascripts')
+    <script src="{{ asset('admin/js/pages/index.js') }}"></script>
 
     <!-- Morris Plugin Js -->
     <script src="{{ asset('admin/plugins/raphael/raphael.min.js') }}"></script>

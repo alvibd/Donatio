@@ -67,6 +67,13 @@ $.AdminBSB.leftSideBar = {
             $(val).next().slideToggle(0);
         });
 
+        $('#leftsidebar li a').each(function (index, obj) {
+            if ($(obj).attr('href') == window.location.href)
+            {
+                $(obj).parents('li').addClass('active');
+            }
+        });
+
         //When page load
         $.each($('.menu .list li.active'), function (i, val) {
             var $activeAnchors = $(val).find('a:eq(0)');

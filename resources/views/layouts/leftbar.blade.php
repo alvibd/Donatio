@@ -33,7 +33,7 @@
     <div class="menu">
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active">
+            <li>
                 <a href="{{ route('home') }}">
                     <i class="material-icons">home</i>
                     <span>Home</span>

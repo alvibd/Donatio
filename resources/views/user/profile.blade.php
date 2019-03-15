@@ -17,239 +17,64 @@
                         <p>{{ $user->roles->first()->name }}</p>
                     </div>
                 </div>
-                {{--<div class="profile-footer">
-                    <ul>
-                        <li>
-                            <span>Followers</span>
-                            <span>1.234</span>
-                        </li>
-                        <li>
-                            <span>Following</span>
-                            <span>1.201</span>
-                        </li>
-                        <li>
-                            <span>Friends</span>
-                            <span>14.252</span>
-                        </li>
-                    </ul>
-                    <button class="btn btn-primary btn-lg waves-effect btn-block">FOLLOW</button>
-                </div>--}}
             </div>
-
-            {{--<div class="card card-about-me">
-                <div class="header">
-                    <h2>ABOUT ME</h2>
-                </div>
-                <div class="body">
-                    <ul>
-                        <li>
-                            <div class="title">
-                                <i class="material-icons">library_books</i>
-                                Education
-                            </div>
-                            <div class="content">
-                                B.S. in Computer Science from the University of Tennessee at Knoxville
-                            </div>
-                        </li>
-                        <li>
-                            <div class="title">
-                                <i class="material-icons">location_on</i>
-                                Location
-                            </div>
-                            <div class="content">
-                                Malibu, California
-                            </div>
-                        </li>
-                        <li>
-                            <div class="title">
-                                <i class="material-icons">edit</i>
-                                Skills
-                            </div>
-                            <div class="content">
-                                <span class="label bg-red">UI Design</span>
-                                <span class="label bg-teal">JavaScript</span>
-                                <span class="label bg-blue">PHP</span>
-                                <span class="label bg-amber">Node.js</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="title">
-                                <i class="material-icons">notes</i>
-                                Description
-                            </div>
-                            <div class="content">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>--}}
         </div>
         <div class="col-xs-12 col-sm-9">
             <div class="card">
                 <div class="body">
                     <div>
                         <ul class="nav nav-tabs" role="tablist">
-                            {{--<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>--}}
                             <li role="presentation" class="active"><a href="#profile_settings" aria-controls="settings" role="tab" data-toggle="tab">Profile Settings</a></li>
                             <li role="presentation"><a href="#change_password_settings" aria-controls="settings" role="tab" data-toggle="tab">Change Password</a></li>
                         </ul>
 
                         <div class="tab-content">
-                            {{--<div role="tabpanel" class="tab-pane fade in active" id="home">
-                                <div class="panel panel-default panel-post">
-                                    <div class="panel-heading">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img src="../../images/user-lg.jpg" />
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">
-                                                    <a href="#">Marc K. Hammond</a>
-                                                </h4>
-                                                Shared publicly - 26 Oct 2018
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="post">
-                                            <div class="post-heading">
-                                                <p>I am a very simple wall post. I am good at containing <a href="#">#small</a> bits of <a href="#">#information</a>. I require little more information to use effectively.</p>
-                                            </div>
-                                            <div class="post-content">
-                                                <img src="../../images/profile-post-image.jpg" class="img-responsive" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel-footer">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="material-icons">thumb_up</i>
-                                                    <span>12 Likes</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="material-icons">comment</i>
-                                                    <span>5 Comments</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="material-icons">share</i>
-                                                    <span>Share</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="Type a comment" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="panel panel-default panel-post">
-                                    <div class="panel-heading">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img src="../../images/user-lg.jpg" />
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">
-                                                    <a href="#">Marc K. Hammond</a>
-                                                </h4>
-                                                Shared publicly - 01 Oct 2018
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="post">
-                                            <div class="post-heading">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                            </div>
-                                            <div class="post-content">
-                                                <iframe width="100%" height="360" src="https://www.youtube.com/embed/10r9ozshGVE" frameborder="0" allowfullscreen=""></iframe>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel-footer">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="material-icons">thumb_up</i>
-                                                    <span>125 Likes</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="material-icons">comment</i>
-                                                    <span>8 Comments</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="material-icons">share</i>
-                                                    <span>Share</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="Type a comment" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>--}}
                             <div role="tabpanel" class="tab-pane fade in active" id="profile_settings" role="tabpanel">
-                                <form class="form-horizontal">
+                                <form class="form-horizontal" action="{{ route('user.profile.edit', ['user' => $user]) }}" method="POST">
+                                    @csrf
                                     <div class="form-group">
-                                        <label for="NameSurname" class="col-sm-2 control-label">Name Surname</label>
+                                        <label for="FirstName" class="col-sm-2 control-label">First Name</label>
                                         <div class="col-sm-10">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" id="NameSurname" name="NameSurname" placeholder="Name Surname" value="Marc K. Hammond" required>
+                                                <input type="text" class="form-control" id="FirstName" name="first_name" placeholder="John" value="{{ $user->first_name }}" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Email" class="col-sm-2 control-label">Email</label>
+                                        <label for="LastName" class="col-sm-2 control-label">Last Name</label>
                                         <div class="col-sm-10">
                                             <div class="form-line">
-                                                <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" value="example@example.com" required>
+                                                <input type="text" class="form-control" id="LastName" name="last_name" placeholder="Doe" value="{{ $user->last_name }}" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="InputExperience" class="col-sm-2 control-label">Experience</label>
-
+                                        <label for="Phone" class="col-sm-2 control-label">Phone</label>
                                         <div class="col-sm-10">
                                             <div class="form-line">
-                                                <textarea class="form-control" id="InputExperience" name="InputExperience" rows="3" placeholder="Experience"></textarea>
+                                                <input type="text" class="form-control" id="Phone" name="phone_no" placeholder="+880-XXXXXXXXXX" value="{{ $user->phone }}" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="InputSkills" class="col-sm-2 control-label">Skills</label>
-
+                                        <label for="Gender" class="col-sm-2 control-label">Gender</label>
                                         <div class="col-sm-10">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" id="InputSkills" name="InputSkills" placeholder="Skills">
+                                                <select class="form-control show-tick" id="Gender" name="gender" required>
+                                                    <option class="{{ $user->gender == null ? 'selected' : '' }}" disabled="disabled">-- Please select --</option>
+                                                    <option class="{{ $user->gender === 'MALE' ? 'selected' : ''  }}" value="MALE">Male</option>
+                                                    <option class="{{ $user->gender === 'FEMALE' ? 'selected' : '' }}" value="FEMALE">Female</option>
+                                                    <option class="{{ $user->gender === 'OTHER' ? 'selected' : ''  }}" value="OTHER">Other</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <input type="checkbox" id="terms_condition_check" class="chk-col-red filled-in" />
-                                            <label for="terms_condition_check">I agree to the <a href="#">terms and conditions</a></label>
+                                        <label for="DateOfBirth" class="col-sm-2 control-label">Phone</label>
+                                        <div class="col-sm-10">
+                                            <div class="form-line">
+                                                <input type="text" class="datepicker form-control" id="DateOfBirth" name="date_of_birth" placeholder="YYYY-MM-DD" value="{{ $user->date_of_birth }}" required>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -300,3 +125,31 @@
         </div>
     </div>
 @endsection
+
+@push('push_stylesheets')
+    <!-- Bootstrap Select Css -->
+    <link href="{{ asset('admin/plugins/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" />
+
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="{{ asset('admin/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet" />
+@endpush
+@push('push_javascripts')
+    <!-- Select Plugin Js -->
+    <script src="{{ asset('admin/plugins/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
+    <!-- Moment Plugin Js -->
+    <script src="{{ asset('admin/plugins/momentjs/moment.js') }}"></script>
+    <!-- Bootstrap Datepicker Plugin Js -->
+    <script src="{{ asset('admin/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.datepicker').bootstrapMaterialDatePicker({
+                format: 'YYYY-MM-DD',
+                clearButton: true,
+                weekStart: 1,
+                time: false,
+                maxDate: moment().subtract(18, 'years')
+            });
+        });
+    </script>
+@endpush

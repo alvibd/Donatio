@@ -29,4 +29,5 @@ Route::middleware(['role:superadministrator', 'auth'])->group(function (){
 
 Route::middleware(['role:superadministrator|user', 'auth'])->group(function(){
     Route::get('user/{user}', 'UserController@profile')->name('user.profile');
+    Route::post('user/{user}', 'UserController@editProfile')->name('user.profile.edit');
 });

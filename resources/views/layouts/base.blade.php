@@ -79,37 +79,27 @@
 
         @section('error_message')
             @if(count($errors)>0)
-
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Error
-                            </h2>
-                        </div>
-                        <div class="body">
-                            <div class="alert alert-danger">
-                                <strong>Oh snap!</strong> Change a few things up and try submitting again.
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{!! $error !!}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{!! $error !!}</li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             @endif
         @show
 
-        @if (session('status'))
+        @if (session('message'))
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="body">
-                        <div class="alert">
-                            {{ session('status') }}
-                        </div>
-                    </div>
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    {{ session('message') }}
                 </div>
             </div>
         @endif
@@ -140,7 +130,6 @@
 
     <!-- Custom Js -->
     <script src="{{ asset('admin/js/admin.js') }}"></script>
-    <script src="{{ asset('admin/js/pages/index.js') }}"></script>
 
     <!-- Demo Js -->
     <script src="{{ asset('admin/js/demo.js') }}"></script>
