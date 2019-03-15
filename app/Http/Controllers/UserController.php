@@ -11,8 +11,7 @@ class UserController extends Controller
         $user = [];
         if (Auth::user()->hasRole('superadministrator')) {
             $user = User::paginate(20);
-        }
-        else {
+        } else {
             abort();
         }
 

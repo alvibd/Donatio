@@ -3,7 +3,7 @@
     <!-- User Info -->
     <div class="user-info">
         <div class="image">
-        <img src="{{ asset('admin/images/user.png') }}" width="48" height="48" alt="User" />
+            <img src="{{ asset('admin/images/user.png') }}" width="48" height="48" alt="User"/>
         </div>
         <div class="info-container">
             <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
@@ -18,8 +18,9 @@
                     <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                     <li role="separator" class="divider"></li> --}}
                     <li><a href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                      document.getElementById('logout-form').submit();"><i class="material-icons">input</i>Sign Out</a></li>
+                           onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();"><i
+                                    class="material-icons">input</i>Sign Out</a></li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
