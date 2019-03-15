@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -12,9 +14,14 @@ class UserController extends Controller
         if (Auth::user()->hasRole('superadministrator')) {
             $user = User::paginate(20);
         } else {
-            abort();
+            abort(403);
         }
 
-        return view();
+        return view('user_list', ['users' => $user]);
+    }
+
+    public function profile(User $user)
+    {
+        return view('user.profile', ['user' => $user]);
     }
 }

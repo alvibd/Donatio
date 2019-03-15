@@ -39,19 +39,21 @@
                     <span>Home</span>
                 </a>
             </li>
-            <li>
-                <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">supervised_user_circle</i>
-                    <span>User Management</span>
-                </a>
-                <ul class="ml-menu">
-                    <li>
-                        <a href="javascript:void(0);">
-                            <span>Users' List</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            @if(Auth::user()->hasRole('superadministrator'))
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">supervised_user_circle</i>
+                        <span>User Management</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="{{ route('admin.user.list') }}">
+                                <span>Users' List</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
         </ul>
     </div>
     <!-- #Menu -->
