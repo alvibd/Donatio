@@ -41,19 +41,39 @@ class UserController extends Controller
 
     public function editProfile(Request $request, User $user)
     {
-        $this->validate($request, [
-            'first_name' => 'required|string|max:100',
-            'last_name' => 'required|string|max:100',
-            'phone_no' => 'required|string|min:12',
-            'gender' => [
-                'required',
-                Rule::in(['MALE', 'FEMALE', 'OTHER'])
-                ],
-            'date_of_birth' => 'required|date|before_or_equal:'.Carbon::today()->subYear(18)
-        ]);
 
-        Session()->flash('message', 'Successful');
+        if(Auth::id() == $user->id || Auth::user()->hasRole('superadministrator'))
+        {
+            $this->validate($request, [
+                'first_name' => 'required|string|max:100',
+                'last_name' => 'required|string|max:100',
+                'phone_no' => 'required|string|min:12',
+                'gender' => [
+                    'required',
+                    Rule::in(['MALE', 'FEMALE', 'OTHER'])
+                    ],
+                'date_of_birth' => 'required|date|before_or_equal:'.Carbon::today()->subYear(18)
+            ]);
+    
+            $user->first_name = $request->first_name;
+            $user->last_name = $request->last_name;
+            $user->phone_no = $request->phone_no;
+            $user->gender = $request->gender;
+            $user->date_of_birth = $request->date_of_birth;
+            $user->saveOrFail();
+    
+            Session()->flash('message', 'Successful');
+    
+            return redirect()->route('user.profile', ['user' => $user]);
+        }
+        else abort(403);
+    }
 
-        return redirect()->route('user.profile', ['user' => $user]);
+    public function changePassword(Request $request, User $user)
+    {
+        if (Auth::id() == $user->id || Auth::user()->hasRole('superadministrator')) 
+        {
+            $this->validate($request, []);
+        }
     }
 }
