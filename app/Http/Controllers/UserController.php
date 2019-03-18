@@ -39,6 +39,13 @@ class UserController extends Controller
         else abort(403);
     }
 
+    /**
+     * @param Request $request
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     * @throws \Throwable
+     */
     public function editProfile(Request $request, User $user)
     {
 
@@ -62,18 +69,35 @@ class UserController extends Controller
             $user->date_of_birth = $request->date_of_birth;
             $user->saveOrFail();
     
-            Session()->flash('message', 'Successful');
+            Session()->flash('message', 'Successfully edited information');
     
             return redirect()->route('user.profile', ['user' => $user]);
         }
         else abort(403);
     }
 
+    /**
+     * @param Request $request
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     * @throws \Throwable
+     */
     public function changePassword(Request $request, User $user)
     {
         if (Auth::id() == $user->id || Auth::user()->hasRole('superadministrator')) 
         {
-            $this->validate($request, []);
+            $this->validate($request, [
+                'password' => 'required|string|min:8|confirmed'
+            ]);
+
+            $user->password = bcrypt($request->password);
+            $user->saveOrFail();
+
+            Session()->flash('message', 'Successfully changed password');
+
+            return redirect()->route('user.profile', ['user' => $user]);
         }
+        else abort(403);
     }
 }
