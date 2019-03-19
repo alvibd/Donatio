@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Role;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Validator;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -34,7 +37,8 @@ class UserController extends Controller
     {
         if (Auth::id() == $user->id || Auth::user()->hasRole('superadministrator'))
         {
-            return view('user.profile', ['user' => $user]);
+            $roles = Role::all();
+            return view('user.profile', ['user' => $user, 'roles' => $roles]);
         }
         else abort(403);
     }
@@ -70,8 +74,10 @@ class UserController extends Controller
             $user->saveOrFail();
     
             Session()->flash('message', 'Successfully edited information');
+
+            $roles = Role::all();
     
-            return redirect()->route('user.profile', ['user' => $user]);
+            return redirect()->route('user.profile', ['user' => $user, 'roles' => $roles]);
         }
         else abort(403);
     }
@@ -87,17 +93,51 @@ class UserController extends Controller
     {
         if (Auth::id() == $user->id || Auth::user()->hasRole('superadministrator')) 
         {
-            $this->validate($request, [
-                'password' => 'required|string|min:8|confirmed'
+            $validator = Validator::make($request->all(), [
+                'OldPassword' => [
+                    'required',
+                    'string',
+                    'min:8',
+                    function ($attribute, $value, $fail) use ($user) {
+                        if (!Hash::check($value, $user->password)) {
+                            $fail('Current Password is incorrect.');
+                        }
+                    }
+                ],
+                'NewPassword' => ['required', 'string', 'min:8', 'confirmed']
             ]);
+
+            if ($validator->fails()) {
+                return redirect()
+                            ->route('user.profile', ['user' => $user])
+                            ->withErrors($validator);
+            }
 
             $user->password = bcrypt($request->password);
             $user->saveOrFail();
 
             Session()->flash('message', 'Successfully changed password');
 
-            return redirect()->route('user.profile', ['user' => $user]);
+            $roles = Role::all();
+    
+            return redirect()->route('user.profile', ['user' => $user, 'roles' => $roles]);
         }
         else abort(403);
+    }
+
+    public function changeRoles(Request $request, User $user)
+    {
+        $this->validate($request, [
+            'roles' => 'required|array|min:1',
+            'roles.*' => 'required|integer|exists:roles,id'
+        ]);
+
+        $user->syncRoles($request->roles);
+
+        Session()->flash('message', 'Successfully changed role(s)');
+
+        $roles = Role::all();
+    
+        return redirect()->route('user.profile', ['user' => $user, 'roles' => $roles]);
     }
 }

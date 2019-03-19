@@ -25,9 +25,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['role:superadministrator', 'auth'])->group(function (){
     Route::get('/users_list', 'UserController@getUsers')->name('admin.user.list');
+    Route::put('/user/{user}', 'UserController@changeRoles')->name('admin.user.change_roles');
 });
 
-Route::middleware(['role:superadministrator|user', 'auth'])->group(function(){
+Route::middleware(['auth'])->group(function(){
     Route::get('user/{user}', 'UserController@profile')->name('user.profile');
     Route::post('user/{user}', 'UserController@editProfile')->name('user.profile.edit');
+    Route::patch('user/{user}', 'UserController@changePassword')->name('user.change_password');
 });

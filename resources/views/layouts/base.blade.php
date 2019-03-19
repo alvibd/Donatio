@@ -24,17 +24,17 @@
         <!-- Animation Css -->
         <link href="{{ asset('admin/plugins/animate-css/animate.css') }}" rel="stylesheet"/>
 
+        @stack('push_stylesheets')
+        
         <!-- Custom Css -->
         <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
 
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="{{ asset('admin/css/themes/all-themes.css') }}" rel="stylesheet"/>
-
-        @stack('push_stylesheets')
     @show
 </head>
 
-<body class="theme-cyan">
+<body class="theme-indigo">
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
