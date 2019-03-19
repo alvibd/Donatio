@@ -26,6 +26,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['role:superadministrator', 'auth'])->group(function (){
     Route::get('/users_list', 'UserController@getUsers')->name('admin.user.list');
     Route::put('/user/{user}', 'UserController@changeRoles')->name('admin.user.change_roles');
+    Route::post('/user/permissions/{user}', 'UserController@changePermissions')->name('admin.user.change_permissions');
+
+    Route::get('roles', 'RoleController@index')->name('admin.role.list');
+    Route::get('/role/create', 'RoleController@create')->name('admin.role.create');
+    Route::post('/role/create', 'RoleController@create')->name('admin.role.store');
+    Route::get('/role/edit/{role}', 'RoleController@edit')->name('admin.role.edit');
+    Route::post('/role/edit/{role}', 'RoleController@edit')->name('admin.role.update');
 });
 
 Route::middleware(['auth'])->group(function(){

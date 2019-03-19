@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Role;
+use App\Permission;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,8 @@ class UserController extends Controller
         if (Auth::id() == $user->id || Auth::user()->hasRole('superadministrator'))
         {
             $roles = Role::all();
-            return view('user.profile', ['user' => $user, 'roles' => $roles]);
+            $permissions = Permission::all();
+            return view('user.profile', ['user' => $user, 'roles' => $roles, 'permissions' => $permissions]);
         }
         else abort(403);
     }
@@ -74,10 +76,8 @@ class UserController extends Controller
             $user->saveOrFail();
     
             Session()->flash('message', 'Successfully edited information');
-
-            $roles = Role::all();
     
-            return redirect()->route('user.profile', ['user' => $user, 'roles' => $roles]);
+            return redirect()->route('user.profile', ['user' => $user]);
         }
         else abort(403);
     }
@@ -118,9 +118,7 @@ class UserController extends Controller
 
             Session()->flash('message', 'Successfully changed password');
 
-            $roles = Role::all();
-    
-            return redirect()->route('user.profile', ['user' => $user, 'roles' => $roles]);
+            return redirect()->route('user.profile', ['user' => $user]);
         }
         else abort(403);
     }
@@ -136,8 +134,20 @@ class UserController extends Controller
 
         Session()->flash('message', 'Successfully changed role(s)');
 
-        $roles = Role::all();
-    
-        return redirect()->route('user.profile', ['user' => $user, 'roles' => $roles]);
+        return redirect()->route('user.profile', ['user' => $user]);
+    }
+
+    public function changePermissions(Request $request, User $user)
+    {
+        $this->validate($request, [
+            'permissions' => 'required|array|min:1',
+            'permissions.*' => 'required|integer|exists:permissions,id'
+        ]);
+
+        $user->syncPermissions($request->permissions);
+
+        Session()->flash('message', 'Successfully changed permission(s)');
+
+        return redirect()->route('user.profile', ['user' => $user]);
     }
 }

@@ -26,6 +26,7 @@
                         <li role="presentation"><a href="#change_password_settings" aria-controls="settings" role="tab" data-toggle="tab"><i class="material-icons">track_changes</i>Change Password</a></li>
                         @if (Auth::user()->hasRole('superadministrator'))
                         <li role="presentation"><a href="#role_change" aria-controls="settings" role="tab" data-toggle="tab"><i class="material-icons">track_changes</i>Change Roles</a></li>
+                        <li role="presentation"><a href="#permission_change" aria-controls="settings" role="tab" data-toggle="tab"><i class="material-icons">track_changes</i>Change Permissions</a></li>
                         @endif
                     </ul>
                     
@@ -146,6 +147,27 @@
                                     </div>
                                 </form>
                             </div>
+
+                            <div role="tabpanel" class="tab-pane animated flipInY" id="permission_change">
+                                    <b>Change User's Permissions</b>
+                                    <hr/>
+                                    <form class="form-horizontal" action="{{ route('admin.user.change_permissions', ['user' => $user]) }}" method="POST">
+                                        @csrf
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-3 col-sm-3">
+                                                @foreach ($permissions as $permission)
+                                                    <input type="checkbox" id="mdm_checkbox_{{ $loop->index }}" class="chk-col-light-green" name="permissions[{{ $loop->index }}]" {{ $user->hasPermission($permission->name) ? 'checked': ''}} value="{{ $permission->id }}" />
+                                                    <label for="mdm_checkbox_{{ $loop->index }}">{{ $permission->name }}</label> 
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-3 col-sm-9">
+                                                <button type="submit" class="btn btn-danger">SUBMIT</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                         @endif
                         </div>
                     </div>
@@ -161,8 +183,7 @@
     <link href="{{ asset('admin/plugins/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" />
     
     <!-- Bootstrap Material Datetime Picker Css -->
-    <link href="{{ asset('admin/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet"
-    /> 
+    <link href="{{ asset('admin/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet"/> 
     @endpush @push('push_javascripts')
     <!-- Select Plugin Js -->
     <script src="{{ asset('admin/plugins/bootstrap-select/js/bootstrap-select.min.js') }}"></script>

@@ -6,7 +6,7 @@
             <img src="{{ asset('admin/images/user.png') }}" width="48" height="48" alt="User"/>
         </div>
         <div class="info-container">
-            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
+            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</div>
             <div class="email">{{ Auth::user()->name }}</div>
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
@@ -49,6 +49,24 @@
                         <li>
                             <a href="{{ route('admin.user.list') }}">
                                 <span>Users' List</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">supervised_user_circle</i>
+                        <span>Roles &amp; Permissions Management</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="{{ route('admin.role.list') }}">
+                                <span>Roles' List</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.role.create') }}">
+                                <span>Create Role</span>
                             </a>
                         </li>
                     </ul>
