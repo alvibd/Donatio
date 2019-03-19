@@ -14,7 +14,7 @@
     <!-- meta character set -->
     <meta charset="UTF-8">
     <!-- Site Title -->
-    <title>Charity</title>
+    <title>Donatio</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
     <!--
@@ -46,7 +46,8 @@
                         <a href="#donate">Donate</a>
                         @guest
                             <a href="{{ route('login') }}">Login</a>
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">Register as Advertiser</a>
+                            <a href="{{ route('register') }}">Register as NGO</a>
                         @endguest
                     </nav>
                     <div class="menu-bar"><span class="lnr lnr-menu"></span></div>
