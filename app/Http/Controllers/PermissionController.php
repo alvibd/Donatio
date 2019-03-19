@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class PermissionController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(Request $request)
     {
         $permissions = Permission::paginate(10);
@@ -14,6 +18,11 @@ class PermissionController extends Controller
         return view('permission.list', ['permissions' => $permissions]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function create(Request $request)
     {
         if($request->isMethod('GET'))
@@ -41,6 +50,12 @@ class PermissionController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @param Permission $permission
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @throws \Throwable
+     */
     public function edit(Request $request, Permission $permission)
     {
         if($request->isMethod('GET'))

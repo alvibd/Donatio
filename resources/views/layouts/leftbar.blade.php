@@ -6,12 +6,14 @@
             <img src="{{ asset('admin/images/user.png') }}" width="48" height="48" alt="User"/>
         </div>
         <div class="info-container">
-            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</div>
+            <div class="name" data-toggle="dropdown" aria-haspopup="true"
+                 aria-expanded="false">{{ Auth::user()->name }}</div>
             <div class="email">{{ Auth::user()->name }}</div>
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
-                <li><a href="{{ route('user.profile.edit', ['user' => Auth::user()]) }}"><i class="material-icons">person</i>Profile</a></li>
+                    <li><a href="{{ route('user.profile.edit', ['user' => Auth::user()]) }}"><i class="material-icons">person</i>Profile</a>
+                    </li>
                     <li role="separator" class="divider"></li>
                     {{-- <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
                     <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
@@ -70,15 +72,15 @@
                             </a>
                         </li>
                         <li>
-                                <a href="{{ route('admin.permission.list') }}">
-                                    <span>Permissions' List</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('admin.permission.create') }}">
-                                    <span>Create Permission</span>
-                                </a>
-                            </li>
+                            <a href="{{ route('admin.permission.list') }}">
+                                <span>Permissions' List</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.permission.create') }}">
+                                <span>Create Permission</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             @endif

@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(Request $request)
     {
         $roles = Role::paginate(10);
@@ -15,6 +19,12 @@ class RoleController extends Controller
         return view('role.list', ['roles' => $roles]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @throws \Illuminate\Validation\ValidationException
+     * @throws \Throwable
+     */
     public function create(Request $request)
     {
         $permissions = Permission::all();
@@ -48,6 +58,12 @@ class RoleController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @param Role $role
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @throws \Throwable
+     */
     public function edit(Request $request, Role $role)
     {
         if($request->isMethod('GET'))

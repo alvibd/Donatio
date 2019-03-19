@@ -31,7 +31,8 @@
                                 <td>{{ $permission->display_name }}</td>
                                 <td>{{ $permission->description }}</td>
                                 <td>{{ $permission->created_at->diffForHumans() }}</td>
-                                <td><a href="{{ route('admin.permission.edit', ['permission' => $permission]) }}" class="waves-effect btn btn-primary">Edit</a></td>
+                                <td><a href="{{ route('admin.permission.edit', ['permission' => $permission]) }}"
+                                       class="waves-effect btn btn-primary">Edit</a></td>
                             </tr>
                         @endforeach
                         </tbody>

@@ -24,9 +24,9 @@
         <!-- Animation Css -->
         <link href="{{ asset('admin/plugins/animate-css/animate.css') }}" rel="stylesheet"/>
 
-        @stack('push_stylesheets')
-        
-        <!-- Custom Css -->
+    @stack('push_stylesheets')
+
+    <!-- Custom Css -->
         <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
 
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->

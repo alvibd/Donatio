@@ -31,7 +31,8 @@
                                 <td>{{ $role->display_name }}</td>
                                 <td>{{ $role->description }}</td>
                                 <td>{{ $role->created_at->diffForHumans() }}</td>
-                                <td><a href="{{ route('admin.role.edit', ['role' => $role]) }}" class="waves-effect btn btn-primary">Edit</a></td>
+                                <td><a href="{{ route('admin.role.edit', ['role' => $role]) }}"
+                                       class="waves-effect btn btn-primary">Edit</a></td>
                             </tr>
                         @endforeach
                         </tbody>
