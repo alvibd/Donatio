@@ -33,6 +33,12 @@ Route::middleware(['role:superadministrator', 'auth'])->group(function (){
     Route::post('/role/create', 'RoleController@create')->name('admin.role.store');
     Route::get('/role/edit/{role}', 'RoleController@edit')->name('admin.role.edit');
     Route::post('/role/edit/{role}', 'RoleController@edit')->name('admin.role.update');
+
+    Route::get('/permissions', 'PermissionController@index')->name('admin.permission.list');
+    Route::get('/permission/create', 'PermissionController@create')->name('admin.permission.create');
+    Route::post('/permission/create', 'PermissionController@create')->name('admin.permission.store');
+    Route::get('/permission/edit/{permission}', 'PermissionController@edit')->name('admin.permission.edit');
+    Route::post('/permission/edit/{permission}', 'PermissionController@edit')->name('admin.permission.update');
 });
 
 Route::middleware(['auth'])->group(function(){

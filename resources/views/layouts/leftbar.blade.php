@@ -69,6 +69,16 @@
                                 <span>Create Role</span>
                             </a>
                         </li>
+                        <li>
+                                <a href="{{ route('admin.permission.list') }}">
+                                    <span>Permissions' List</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.permission.create') }}">
+                                    <span>Create Permission</span>
+                                </a>
+                            </li>
                     </ul>
                 </li>
             @endif
