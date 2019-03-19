@@ -34,7 +34,7 @@ class PermissionController extends Controller
             $this->validate($request, [
                 'name' => 'required|string|min:4',
                 'display_name' => 'required|string|min:4',
-                'description' => 'sometimes|string|min:10'
+                'description' => 'nullable|string|min:10'
             ]);
 
             $permission = new Permission();
@@ -42,7 +42,7 @@ class PermissionController extends Controller
             $permission->display_name = $request->name;
             $permission->description = $request->description;
 
-            $role->saveOrFail();
+            $permission->saveOrFail();
 
             Session()->flash('message', 'Successfully created permission');
 
@@ -62,7 +62,14 @@ class PermissionController extends Controller
         {
             return view('permission.edit', ['permission' => $permission]);
         }
-        elseif ($request->isMethod('POST')) {
+        elseif ($request->isMethod('POST'))
+        {
+
+            $this->validate($request, [
+                'name' => 'required|string|min:4',
+                'display_name' => 'required|string|min:4',
+                'description' => 'nullable|string|min:10'
+            ]);
             
             $permission->display_name = $request->name;
             $permission->description = $request->description;

@@ -22,19 +22,28 @@
                 <div class="body">
                     <div>
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#profile_settings" aria-controls="settings"
-                                                                      role="tab" data-toggle="tab"><i
-                                            class="material-icons">settings</i>Profile Settings</a></li>
-                            <li role="presentation"><a href="#change_password_settings" aria-controls="settings"
-                                                       role="tab" data-toggle="tab"><i class="material-icons">track_changes</i>Change
-                                    Password</a></li>
+                            <li role="presentation" class="active">
+                                <a href="#profile_settings" aria-controls="settings" role="tab" data-toggle="tab">
+                                    <i class="material-icons">settings</i>Profile Settings
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#change_password_settings" aria-controls="settings" role="tab"
+                                   data-toggle="tab">
+                                    <i class="material-icons">track_changes</i>Change Password
+                                </a>
+                            </li>
                             @if (Auth::user()->hasRole('superadministrator'))
-                                <li role="presentation"><a href="#role_change" aria-controls="settings" role="tab"
-                                                           data-toggle="tab"><i class="material-icons">track_changes</i>Change
-                                        Roles</a></li>
-                                <li role="presentation"><a href="#permission_change" aria-controls="settings" role="tab"
-                                                           data-toggle="tab"><i class="material-icons">track_changes</i>Change
-                                        Permissions</a></li>
+                                <li role="presentation">
+                                    <a href="#role_change" aria-controls="settings" role="tab" data-toggle="tab">
+                                        <i class="material-icons">track_changes</i>Change Roles
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#permission_change" aria-controls="settings" role="tab" data-toggle="tab">
+                                        <i class="material-icons">track_changes</i>Change Permissions
+                                    </a>
+                                </li>
                             @endif
                         </ul>
 
@@ -49,8 +58,7 @@
                                         <div class="col-sm-10">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" id="FirstName" name="first_name"
-                                                       placeholder="John" value="{{ $user->first_name }}"
-                                                       required>
+                                                       placeholder="John" value="{{ $user->first_name }}" required>
                                             </div>
                                         </div>
                                     </div>
@@ -101,8 +109,7 @@
                                             <div class="form-line">
                                                 <input type="text" class="datepicker form-control" id="DateOfBirth"
                                                        name="date_of_birth" placeholder="YYYY-MM-DD"
-                                                       value="{{ $user->date_of_birth }}"
-                                                       required>
+                                                       value="{{ $user->date_of_birth }}" required>
                                             </div>
                                         </div>
                                     </div>
@@ -143,8 +150,7 @@
                                             <div class="form-line">
                                                 <input type="password" class="form-control" id="NewPasswordConfirm"
                                                        name="NewPassword_confirmation"
-                                                       placeholder="New Password (Confirm)"
-                                                       required>
+                                                       placeholder="New Password (Confirm)" required>
                                             </div>
                                         </div>
                                     </div>
@@ -243,5 +249,4 @@
             });
         });
     </script>
-
 @endpush

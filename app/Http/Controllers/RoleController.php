@@ -38,7 +38,7 @@ class RoleController extends Controller
             $this->validate($request, [
                 'name' => 'required|string|min:4',
                 'display_name' => 'required|string|min:4',
-                'description' => 'sometimes|string|min:10',
+                'description' => 'nullable|string|min:10',
                 'permissions' => 'required|array|min:1',
                 'permissions.*' => 'required|integer|exists:permissions,id'
             ]);
@@ -71,7 +71,15 @@ class RoleController extends Controller
             $permissions = Permission::all();
             return view('role.edit', ['role' => $role, 'permissions' => $permissions]);
         }
-        elseif ($request->isMethod('POST')) {
+        elseif ($request->isMethod('POST'))
+        {
+            $this->validate($request, [
+                'name' => 'required|string|min:4',
+                'display_name' => 'required|string|min:4',
+                'description' => 'nullable|string|min:10',
+                'permissions' => 'required|array|min:1',
+                'permissions.*' => 'required|integer|exists:permissions,id'
+            ]);
             
             $role->display_name = $request->name;
             $role->description = $request->description;

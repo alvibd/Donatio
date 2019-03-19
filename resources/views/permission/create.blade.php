@@ -29,7 +29,7 @@
                                 <div class="form-group form-float">
                                     <div class="disabled">
                                         <label class="form-label" for="display_name">Display Name</label>
-                                        <input type="text" id="display_name" class="form-control" name="display_name"
+                                        <input type="text" id="display_name" class="form-control" name="display_name" readonly
                                                required>
                                     </div>
                                 </div>

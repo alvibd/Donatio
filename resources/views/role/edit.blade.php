@@ -13,7 +13,7 @@
                 </div>
                 <div class="body">
 
-                    <h2 class="card-inside-title">Create a new Role</h2>
+                    <h2 class="card-inside-title">Edit a new Role</h2>
                     <div class="row clearfix">
                         <form method="POST" action="{{ route('admin.role.update', ['role' => $role]) }}">
                             @csrf
