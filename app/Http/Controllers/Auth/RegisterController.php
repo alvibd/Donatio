@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\AppConstant;
+use App\Role;
 use App\User;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -51,27 +54,35 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'company_name' => ['required', 'string', 'max:255'],
-            'registration_no' => ['required', 'string', 'max:20'],
-            'address' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone_no' => 'required|string|min:11',
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'terms' => ['accept']
+            'terms' => ['accepted']
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
+     * @param array $data
+     * @return User
+     * @throws \Throwable
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $user = new User();
+
+        $user->first_name = $data['first_name'];
+        $user->last_name = $data['last_name'];
+        $user->name = $data['first_name'].' '.$data['last_name'];
+        $user->email = $data['email'];
+        $user->phone_no = $data['phone_no'];
+        $user->password = Hash::make($data['password']);
+        $user->gender = AppConstant::$gender['male'];
+        $user->date_of_birth = Carbon::today();
+
+        $user->saveOrFail();
+
+        $user->attachRole(Role::whereName('user')->first());
+
+        return $user;
     }
 }

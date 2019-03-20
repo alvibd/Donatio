@@ -73,45 +73,6 @@
                 </div>
                 <div class="input-group">
                         <span class="input-group-addon">
-                            <i class="material-icons">business</i>
-                        </span>
-                    <div class="form-line {{ $errors->has('company_name') ? 'focused error' : ''}}">
-                        <input type="text" class="form-control" name="company_name" placeholder="Organization Name" required>
-                    </div>
-                    @if ($errors->has('company_name'))
-                        <span class="col-pink" role="alert">
-                                <strong>{{ $errors->first('company_name') }}</strong>
-                            </span>
-                    @endif
-                </div>
-                <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">plus_one</i>
-                        </span>
-                    <div class="form-line {{ $errors->has('registration_no') ? 'focused error' : ''}}">
-                        <input type="text" class="form-control" name="registration_no" placeholder="Registration No" required>
-                    </div>
-                    @if ($errors->has('registration_no'))
-                        <span class="col-pink" role="alert">
-                                <strong>{{ $errors->first('registration_no') }}</strong>
-                            </span>
-                    @endif
-                </div>
-                <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">location_on</i>
-                        </span>
-                    <div class="form-line {{ $errors->has('address') ? 'focused error' : ''}}">
-                        <input type="text" class="form-control" name="address" placeholder="Address" required>
-                    </div>
-                    @if ($errors->has('address'))
-                        <span class="col-pink" role="alert">
-                                <strong>{{ $errors->first('address') }}</strong>
-                            </span>
-                    @endif
-                </div>
-                <div class="input-group">
-                        <span class="input-group-addon">
                             <i class="material-icons">email</i>
                         </span>
                     <div class="form-line {{ $errors->has('email') ? 'focused error' : ''}}">
@@ -121,6 +82,20 @@
                     @if ($errors->has('email'))
                         <span class="col-pink" role="alert">
                                 <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                    @endif
+                </div>
+                <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">phone</i>
+                        </span>
+                    <div class="form-line {{ $errors->has('phone_no') ? 'focused error' : ''}}">
+                        <input type="text" class="form-control" name="phone_no" value="{{ old('phone_no') }}"
+                               placeholder="phone_no" required>
+                    </div>
+                    @if ($errors->has('phone_no'))
+                        <span class="col-pink" role="alert">
+                                <strong>{{ $errors->first('phone_no') }}</strong>
                             </span>
                     @endif
                 </div>
@@ -142,7 +117,7 @@
                             <i class="material-icons">lock</i>
                         </span>
                     <div class="form-line">
-                        <input type="password" class="form-control" name="password_confirm" minlength="6"
+                        <input type="password" class="form-control" name="password_confirmation" minlength="8"
                                placeholder="Confirm Password" required>
                     </div>
                     @if ($errors->has('password_confirm'))
@@ -152,7 +127,7 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" name="terms" id="terms" class="filled-in chk-col-pink" required>
+                    <input type="checkbox" name="terms" id="terms" class="filled-in chk-col-pink" value="1" required>
                     <label for="terms">I read and agree to the <a href="javascript:void(0);">terms of usage</a>.</label>
                     @if ($errors->has('terms'))
                         <span class="col-pink" role="alert">

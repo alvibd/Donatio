@@ -76,7 +76,7 @@
                                         <div class="col-sm-10">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" id="Phone" name="phone_no"
-                                                       placeholder="+880-XXXXXXXXXX" value="{{ $user->phone }}"
+                                                       placeholder="+880-XXXXXXXXXX" value="{{ $user->phone_no }}"
                                                        required>
                                             </div>
                                         </div>

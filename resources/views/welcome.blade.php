@@ -46,8 +46,7 @@
                         <a href="#donate">Donate</a>
                         @guest
                             <a href="{{ route('login') }}">Login</a>
-                            <a href="{{ route('register') }}">Register as Advertiser</a>
-                            <a href="{{ route('register') }}">Register as NGO</a>
+                            <a href="{{ route('register') }}">Register</a>
                         @endguest
                     </nav>
                     <div class="menu-bar"><span class="lnr lnr-menu"></span></div>

@@ -57,7 +57,7 @@ class UserController extends Controller
             $this->validate($request, [
                 'first_name' => 'required|string|max:100',
                 'last_name' => 'required|string|max:100',
-                'phone_no' => 'required|string|min:12',
+                'phone_no' => 'required|string|min:11',
                 'gender' => [
                     'required',
                     Rule::in(['MALE', 'FEMALE', 'OTHER'])
