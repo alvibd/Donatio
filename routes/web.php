@@ -17,8 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -45,4 +43,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user/{user}', 'UserController@profile')->name('user.profile');
     Route::post('user/{user}', 'UserController@editProfile')->name('user.profile.edit');
     Route::patch('user/{user}', 'UserController@changePassword')->name('user.change_password');
+});
+
+Route::middleware(['role:user|advertiser', 'auth'])->group(function (){
+    Route::get('/advertiser/create', 'AdvertiserController@create')->name('advertiser.create');
+    Route::post('/advertiser/create', 'AdvertiserController@create')->name('advertiser.store');
+    Route::get('/advertisers/{user}', 'AdvertiserController@getAdvertisers')->name('advertiser.list');
 });

@@ -84,6 +84,22 @@
                     </ul>
                 </li>
             @endif
+            @if(Auth::user()->hasRole('user|advertiser'))
+                <li>
+                    <a href="{{ route('advertiser.create') }}">
+                        <i class="material-icons">domain</i>
+                        <span>Add Advertiser Profile</span>
+                    </a>
+                </li>
+            @endif
+            @if(Auth::user()->hasRole('user'))
+                <li>
+                    <a href="{{ route('home') }}">
+                        <i class="material-icons">domain</i>
+                        <span>Add NGO Profile</span>
+                    </a>
+                </li>
+            @endif
         </ul>
     </div>
     <!-- #Menu -->

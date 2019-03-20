@@ -38,4 +38,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function advertisers()
+    {
+        return $this->hasMany(Advertiser::class, 'owner_id');
+    }
 }
