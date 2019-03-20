@@ -33,7 +33,7 @@
                                 <td>{{ $advertiser->email }}</td>
                                 <td>{{ $advertiser->phone_no }}</td>
                                 <td>{{ $advertiser->created_at->diffForHumans() }}</td>
-                                <td><a href="" class="waves-effect btn btn-primary">Edit</a></td>
+                                <td><a href="{{ route('advertiser.profile', ['advertiser' => $advertiser]) }}" class="waves-effect btn btn-primary">Profile</a></td>
                             </tr>
                         @endforeach
                         </tbody>

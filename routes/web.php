@@ -37,6 +37,8 @@ Route::middleware(['role:superadministrator', 'auth'])->group(function () {
     Route::post('/permission/create', 'PermissionController@create')->name('admin.permission.store');
     Route::get('/permission/edit/{permission}', 'PermissionController@edit')->name('admin.permission.edit');
     Route::post('/permission/edit/{permission}', 'PermissionController@edit')->name('admin.permission.update');
+
+    Route::get('/admin/advertisers', 'AdvertiserController@adminAdvertiserList')->name('admin.advertiser.list');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -49,4 +51,8 @@ Route::middleware(['role:user|advertiser', 'auth'])->group(function (){
     Route::get('/advertiser/create', 'AdvertiserController@create')->name('advertiser.create');
     Route::post('/advertiser/create', 'AdvertiserController@create')->name('advertiser.store');
     Route::get('/advertisers/{user}', 'AdvertiserController@getAdvertisers')->name('advertiser.list');
+});
+
+Route::middleware(['role:advertiser|superadministrator', 'auth'])->prefix('advertiser')->group(function (){
+    Route::get('{advertiser}', 'AdvertiserController@profile')->name('advertiser.profile');
 });

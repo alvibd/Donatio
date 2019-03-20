@@ -83,12 +83,26 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="{{ route('admin.advertiser.list') }}">
+                        <i class="material-icons">domain</i>
+                        <span>Advertisers</span>
+                    </a>
+                </li>
             @endif
             @if(Auth::user()->hasRole('user|advertiser'))
                 <li>
                     <a href="{{ route('advertiser.create') }}">
                         <i class="material-icons">domain</i>
                         <span>Add Advertiser Profile</span>
+                    </a>
+                </li>
+            @endif
+            @if(Auth::user()->hasRole('advertiser'))
+                <li>
+                    <a href="{{ route('advertiser.list', ['user' => Auth::user()]) }}">
+                        <i class="material-icons">domain</i>
+                        <span>My Advertiser Profiles</span>
                     </a>
                 </li>
             @endif

@@ -61,10 +61,37 @@ class AdvertiserController extends Controller
         if (Auth::user()->hasRole('superadministrator|advertiser'))
         {
             $advertisers = [];
-            Auth::user()->hasRole('superadministrator') ? $advertisers = $user->advertisers()->paginate(10) : $advertisers = Auth::user()->advertisers()->paginate(10);
+            $advertisers = Auth::user()->advertisers()->paginate(10);
 
-            return view('advertiser.list', ['user' => $user, 'advertisers' => $advertisers]);
+            return view('advertiser.list', ['advertisers' => $advertisers]);
         }
         else abort(403);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function adminAdvertiserList(Request $request)
+    {
+        $advertisers = Advertiser::paginate(10);
+
+        return view('advertiser.list', ['advertisers' => $advertisers]);
+    }
+
+    /**
+     * @param Request $request
+     * @param Advertiser $advertiser
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function profile(Request $request, Advertiser $advertiser)
+    {
+
+        if (!Auth::user()->hasRoleAndOwns(['advertiser'], $advertiser, ['requireAll' => true, 'foreignKeyName' => 'owner_id']) xor Auth::user()->hasRole('superadministrator'))
+        {
+            abort(403);
+        }
+
+        return view('advertiser.profile', ['advertiser' => $advertiser]);
     }
 }
