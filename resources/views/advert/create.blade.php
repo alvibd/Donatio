@@ -16,7 +16,7 @@
 
                     <h2 class="card-inside-title">Fill up Advert Campaign Info</h2>
                     <div class="row clearfix">
-                        <form method="POST" action="{{ route('advertiser.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('advertiser.advert.store', ['advertiser' => $advertiser]) }}" enctype="multipart/form-data">
                             @csrf
                             <div class="col-sm-12">
                                 <div class="form-group form-float">
@@ -50,7 +50,7 @@
                                 <div class="form-group form-float">
                                     <label class="form-label" for="file_upload">Upload Advert Video</label>
                                     <div class="form-line">
-                                        <input type="file" class="form-control" id="file_upload" name="file_upload">
+                                        <input type="file" class="form-control" id="file_upload" name="file">
                                     </div>
                                 </div>
                             </div>

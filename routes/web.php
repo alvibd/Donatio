@@ -55,5 +55,6 @@ Route::middleware(['role:user|advertiser', 'auth'])->group(function (){
 
 Route::middleware(['role:advertiser|superadministrator', 'auth'])->prefix('advertiser')->group(function (){
     Route::get('{advertiser}', 'AdvertiserController@profile')->name('advertiser.profile');
-    Route::view('{advertiser}/upload_advert', 'advert.create')->name('advertiser.advert.create');
+    Route::get('{advertiser}/upload_advert', 'AdvertController@create')->name('advertiser.advert.create');
+    Route::post('{advertiser}/upload_advert', 'AdvertController@create')->name('advertiser.advert.store');
 });
