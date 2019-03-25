@@ -61,7 +61,7 @@
                                                 <i class="material-icons">attach_money</i>
                                             </span>
                                     <div class="form-line">
-                                        <input type="text" class="form-control money-dollar" placeholder="Charge per view is $0.35" min="1">
+                                        <input type="text" class="form-control money-dollar" name="money" placeholder="Charge per view is $0.35" min="1">
                                     </div>
                                 </div>
                             </div>

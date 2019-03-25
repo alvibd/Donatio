@@ -10,4 +10,9 @@ class Advertiser extends Model
     {
         return $this->belongsTo(User::class, 'owner_id');
     }
+
+    public function adverts()
+    {
+        return $this->hasMany(Advert::class);
+    }
 }

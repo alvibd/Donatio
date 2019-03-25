@@ -17,4 +17,11 @@ class AppConstant
         'female' => 'FEMALE',
         'other' => 'OTHER'
     ];
+
+    public static $advert_status = [
+        'pending' => 'PENDING',
+        'processing' => 'PROCESSING',
+        'approved' => 'APPROVED',
+        'refunded' => 'REFUNDED'
+    ];
 }

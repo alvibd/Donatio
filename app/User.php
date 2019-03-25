@@ -43,4 +43,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Advertiser::class, 'owner_id');
     }
+
+    public function adverts()
+    {
+        return $this->hasMany(Advert::class);
+    }
 }

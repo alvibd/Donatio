@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Advert;
 use App\Advertiser;
+use App\AppConstant;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AdvertController extends Controller
 {
@@ -30,13 +32,26 @@ class AdvertController extends Controller
 
                 $advert = new Advert();
 
+                $advert->advertiser()->associate($advertiser);
+                $advert->user()->associate($advertiser->owner);
+                $advert->advert_name = $request->name;
+                $advert->start_date = $request->start_date;
+                $advert->end_date = $request->end_date;
+                $advert->balance = $request->money*100;
+                $advert->status = AppConstant::$advert_status['pending'];
+
                 $video = null;
 
                 if ($request->hasFile('file')) {
-                    $video = $request->file('file');
-                    return ['file_name' => $video];
+                    $video = $request->file('file')->store('public');
+                    $advert->file_name = Storage::url($video);
                 }
 
+                $advert->saveOrFail();
+
+                Session()->flash('message', 'Upload successful. Awaiting censor approval. Your money will be refunded in case of your advert fails in censorship');
+
+                return redirect()->route('advertiser.profile', ['advertiser' => $advertiser]);
             }
         }
         else
