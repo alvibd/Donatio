@@ -15,4 +15,9 @@ class Advertiser extends Model
     {
         return $this->hasMany(Advert::class);
     }
+
+    public function advertiserTransactions()
+    {
+        return $this->hasMany(AdvertiserTransaction::class);
+    }
 }

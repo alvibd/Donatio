@@ -66,6 +66,41 @@
                                 </div>
                             </div>
                             <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused">
+                                        <input type="text" class="form-control" name="card_holder_name" required>
+                                        <label class="form-label">Card Holder Name</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 demo-masked-input">
+                                <b>Credit Card</b>
+                                <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">credit_card</i>
+                                            </span>
+                                    <div class="form-line">
+                                        <input type="text" class="form-control credit-card" name="card_no" placeholder="Ex: 0000 0000 0000 0000" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused">
+                                        <input type="text" class="form-control" name="cvc" required>
+                                        <label class="form-label">cvc</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line focused">
+                                        <input type="text" id="expiry_date" class="form-control" name="expiry_date" required>
+                                        <label class="form-label">Expiry Date</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <div class="col-sm-offset-5 col-sm-2">
                                         <button type="submit" class="btn btn-danger">SUBMIT</button>
@@ -92,6 +127,9 @@
     <!-- Bootstrap Datepicker Plugin Js -->
     <script src="{{ asset('admin/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
 
+    <!-- Input Mask Plugin Js -->
+    <script src="{{ asset('admin/plugins/jquery-inputmask/jquery.inputmask.bundle.js') }}"></script>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $('#start_date').bootstrapMaterialDatePicker({
@@ -112,9 +150,24 @@
                 currentDate: moment(),
             });
 
+            $('#expiry_date').bootstrapMaterialDatePicker({
+                format: 'YY-MM',
+                clearButton: true,
+                weekStart: 1,
+                time: false,
+                minDate: moment(),
+                currentDate: moment(),
+            });
+
             $('#start_date').on('change', function (e) {
                 $('#end_date').bootstrapMaterialDatePicker('setMinDate', moment(e.delegateTarget.value));
-            })
+            });
+
+            //Masked Input ============================================================================================================================
+            var $demoMaskedInput = $('.demo-masked-input');
+
+            //Credit Card
+            $demoMaskedInput.find('.credit-card').inputmask('9999 9999 9999 9999', { placeholder: '____ ____ ____ ____' });
         });
     </script>
 @endpush
