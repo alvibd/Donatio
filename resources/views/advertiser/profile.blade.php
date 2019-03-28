@@ -12,12 +12,14 @@
                     </h2>
                 </div>
                 <div class="body">
-                    <div class="icon-and-text-button-demo">
-                        <a href="{{ route('advertiser.advert.create', ['advertiser' => $advertiser]) }}" type="button" class="btn bg-indigo waves-effect">
-                            <i class="material-icons">cloud_upload</i>
-                            <span>Upload Advert</span>
-                        </a>
-                    </div>
+                    @if(Auth::user()->hasRole('advertiser'))
+                        <div class="icon-and-text-button-demo">
+                            <a href="{{ route('advertiser.advert.create', ['advertiser' => $advertiser]) }}" type="button" class="btn bg-indigo waves-effect">
+                                <i class="material-icons">cloud_upload</i>
+                                <span>Upload Advert</span>
+                            </a>
+                        </div>
+                    @endif
                     <div class="body table-responsive">
                         <table class="table table-hover">
                             <thead>
@@ -41,9 +43,11 @@
                                     <td>{{ $advert->status }}</td>
                                     <td>{{ $advert->created_at->diffForHumans() }}</td>
                                     @if(Auth::user()->hasRole('advertiser'))
-                                        <td><a href="" class="waves-effect btn btn-primary">Add balance</a></td>
-                                        @elseif(Auth::user()->hasRole('superadministrator'))
-                                        <td><a href="" class="waves-effect btn btn-primary">Process Transactions</a></td>
+                                        <td><a href="{{ route('advertiser.advert.edit', ['advert' => $advert]) }}"
+                                               class="waves-effect btn btn-primary">Add balance</a></td>
+                                    @elseif(Auth::user()->hasRole('superadministrator'))
+                                        <td><a href="" class="waves-effect btn btn-primary">Process Transactions</a>
+                                        </td>
                                     @endif
                                 </tr>
                             @endforeach
