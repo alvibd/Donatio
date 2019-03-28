@@ -59,7 +59,7 @@ class AdvertController extends Controller
                 $advertiser_transaction->advert()->associate($advert);
                 $advertiser_transaction->amount = $advert->balance;
                 $advertiser_transaction->status = AppConstant::$advert_status['pending'];
-                $advertiser_transaction->tracking_no = $this->generateRandomString(10);
+                $advertiser_transaction->tracking_number = $this->generateRandomString(10);
 
                 $advertiser_transaction->saveOrFail();
 
