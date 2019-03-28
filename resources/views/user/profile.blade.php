@@ -231,7 +231,7 @@
     <link href="{{ asset('admin/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}"
           rel="stylesheet"/>
 @endpush
-push('push_javascripts')
+@push('push_javascripts')
     <!-- Select Plugin Js -->
     <script src="{{ asset('admin/plugins/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
     <!-- Moment Plugin Js -->

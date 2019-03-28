@@ -168,12 +168,46 @@ class AdvertController extends Controller
 
                 Session()->flash('message', 'Successfully updated advert');
 
-                return redirect()->route('advertiser.profile', ['advertiser' => $advert->user]);
+                return redirect()->route('advertiser.profile', ['advertiser' => $advert->advertiser]);
             }
         }
         else abort(403);
     }
 
+    /**
+     * @param Request $request
+     * @param Advert $advert
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @throws \Illuminate\Validation\ValidationException
+     * @throws \Throwable
+     */
     public function changeStatus(Request $request, Advert $advert)
-    {}
+    {
+        if(Auth::user()->hasRole('superadministrator'))
+        {
+            if($request->isMethod("GET"))
+            {
+                return view('advert.change_status', ['advert' => $advert]);
+            }
+            elseif ($request->isMethod('POST'))
+            {
+                $this->validate($request, [
+                    'status' => 'required'
+                ]);
+
+                $advert->status = $request->status;
+
+                $advert->saveOrFail();
+
+                $transaction = $advert->advertiserTransactions()->first();
+                $transaction->status = $request->status;
+                $transaction->saveOrFail();
+
+                Session()->flash('message', 'Successfully changed advert status');
+
+                return redirect()->route('advertiser.profile', ['advertiser' => $advert->advertiser]);
+            }
+        }
+        else abort(403);
+    }
 }

@@ -59,4 +59,13 @@ Route::middleware(['role:advertiser|superadministrator', 'auth'])->prefix('adver
     Route::get('{advertiser}', 'AdvertiserController@profile')->name('advertiser.profile');
     Route::get('{advertiser}/upload_advert', 'AdvertController@create')->name('advertiser.advert.create');
     Route::post('{advertiser}/upload_advert', 'AdvertController@create')->name('advertiser.advert.store');
+    Route::get('{advert}/change_status', 'AdvertController@changeStatus')->name('advertiser.advert.change_status');
+    Route::post('{advert}/change_status', 'AdvertController@changeStatus')->name('advertiser.advert.submit_change_status');
+});
+
+
+Route::middleware(['role:user|non_profit_organization', 'auth'])->group(function (){
+    Route::get('/non_profit_organization/create', 'NonProfitOrganizationController@create')->name('non_profit_organization.create');
+    Route::post('/non_profit_organization/create', 'NonProfitOrganizationController@create')->name('non_profit_organization.store');
+//    Route::get('/non_profit_organization/{user}', 'NonProfitOrganization@getAdvertisers')->name('advertiser.list');
 });

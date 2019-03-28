@@ -108,7 +108,7 @@
             @endif
             @if(Auth::user()->hasRole('user'))
                 <li>
-                    <a href="{{ route('home') }}">
+                    <a href="{{ route('non_profit_organization.create') }}">
                         <i class="material-icons">domain</i>
                         <span>Add NGO Profile</span>
                     </a>

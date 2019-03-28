@@ -46,7 +46,7 @@
                                         <td><a href="{{ route('advertiser.advert.edit', ['advert' => $advert]) }}"
                                                class="waves-effect btn btn-primary">Add balance</a></td>
                                     @elseif(Auth::user()->hasRole('superadministrator'))
-                                        <td><a href="" class="waves-effect btn btn-primary">Process Transactions</a>
+                                        <td><a href="{{ route('advertiser.advert.change_status', ['advert' => $advert]) }}" class="waves-effect btn btn-primary">Process Transactions</a>
                                         </td>
                                     @endif
                                 </tr>
