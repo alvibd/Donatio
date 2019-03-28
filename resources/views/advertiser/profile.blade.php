@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        @yield('page_title')
+                        List of Uploaded Adverts
                     </h2>
                 </div>
                 <div class="body">
@@ -40,7 +40,11 @@
                                     <td>${{ $advert->balance/100 }}</td>
                                     <td>{{ $advert->status }}</td>
                                     <td>{{ $advert->created_at->diffForHumans() }}</td>
-                                    <td><a href="" class="waves-effect btn btn-primary">Action</a></td>
+                                    @if(Auth::user()->hasRole('advertiser'))
+                                        <td><a href="" class="waves-effect btn btn-primary">Add balance</a></td>
+                                        @elseif(Auth::user()->hasRole('superadministrator'))
+                                        <td><a href="" class="waves-effect btn btn-primary">Process Transactions</a></td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>
