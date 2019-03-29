@@ -39,6 +39,7 @@ Route::middleware(['role:superadministrator', 'auth'])->group(function () {
     Route::post('/permission/edit/{permission}', 'PermissionController@edit')->name('admin.permission.update');
 
     Route::get('/admin/advertisers', 'AdvertiserController@adminAdvertiserList')->name('admin.advertiser.list');
+    Route::get('/admin/adverts', 'AdvertController@index')->name('admin.adverts.list');
 });
 
 Route::middleware(['auth'])->group(function () {

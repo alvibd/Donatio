@@ -89,6 +89,12 @@
                         <span>Advertisers</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.adverts.list') }}">
+                        <i class="material-icons">domain</i>
+                        <span>Add Advertiser Profile</span>
+                    </a>
+                </li>
             @endif
             @if(Auth::user()->hasRole('user|advertiser'))
                 <li>

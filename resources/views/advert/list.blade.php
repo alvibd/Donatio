@@ -12,14 +12,6 @@
                     </h2>
                 </div>
                 <div class="body">
-                    @if(Auth::user()->hasRole('advertiser'))
-                        <div class="icon-and-text-button-demo">
-                            <a href="{{ route('advertiser.advert.create', ['advertiser' => $advertiser]) }}" type="button" class="btn bg-indigo waves-effect">
-                                <i class="material-icons">cloud_upload</i>
-                                <span>Upload Advert</span>
-                            </a>
-                        </div>
-                    @endif
                     <div class="body table-responsive">
                         <table class="table table-hover">
                             <thead>
@@ -34,21 +26,23 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($advertiser->adverts as $advert)
+                            @foreach($adverts as $advert)
                                 <tr>
-                                    <th scope="row">{{ $advert->id }}</th>
+                                    <th scope="row">{{ $advertiser->id }}</th>
                                     <td>{{ $advert->advert_name }}</td>
                                     <td>{{ $advert->view_count }}</td>
                                     <td>${{ $advert->balance/100 }}</td>
                                     <td>{{ $advert->status }}</td>
                                     <td>{{ $advert->created_at->diffForHumans() }}</td>
-                                        <td><a href="{{ route('advertiser.advert.change_status', ['advert' => $advert]) }}" class="waves-effect btn btn-primary">Process Transactions</a>
-                                        </td>
+                                    <td><a href="{{ route('advertiser.advert.change_status', ['advert' => $advert]) }}"
+                                           class="waves-effect btn btn-primary">Process Transactions</a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
                     </div>
+                    {{ $adverts->links() }}
                 </div>
             </div>
         </div>

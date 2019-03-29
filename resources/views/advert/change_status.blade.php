@@ -3,6 +3,25 @@
 @section('page_title', 'Change Advert Status')
 
 @section('content')
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>View Advert</h2>
+                </div>
+                <div class="body">
+                    <div class="post">
+                        <div class="post-heading">
+                            <p>{{ $advert->advert_name }}</p>
+                        </div>
+                        <div class="post-content">
+                            <iframe width="100%" height="460" src="{{ asset($advert->file_name) }}" frameborder="0" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Input -->
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -13,7 +32,6 @@
                     </h2>
                 </div>
                 <div class="body">
-
                     <h2 class="card-inside-title">Change Advert Status</h2>
                     <div class="row clearfix">
                         <form method="POST" action="{{ route('advertiser.advert.submit_change_status', ['advert' => $advert]) }}" enctype="multipart/form-data">
