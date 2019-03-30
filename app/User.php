@@ -49,8 +49,18 @@ class User extends Authenticatable
         return $this->hasMany(Advert::class);
     }
 
-    public function ngo()
+    public function nonProfitOrganization()
     {
         return $this->hasOne(NonProfitOrganization::class, 'manager_id');
+    }
+
+    public function withdrawRequests()
+    {
+        return $this->hasMany(WithdrawRequest::class, 'manager_id');
+    }
+
+    public function withdrawTransactions()
+    {
+        return $this->hasMany(WithdrawTransaction::class, 'processed_by');
     }
 }

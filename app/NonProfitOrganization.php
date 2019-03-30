@@ -10,4 +10,14 @@ class NonProfitOrganization extends Model
     {
         return $this->belongsTo(User::class, 'manager_id');
     }
+
+    public function withdrawRequests()
+    {
+        return $this->hasMany(WithdrawRequest::class);
+    }
+    
+    public function withdrawTransactions()
+    {
+        return $this->hasMany(WithdrawTransaction::class);
+    }
 }

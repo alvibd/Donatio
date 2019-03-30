@@ -120,6 +120,14 @@
                     </a>
                 </li>
             @endif
+            @if(Auth::user()->hasRole('non_profit_organization'))
+                <li>
+                    <a href="{{ route('non_profit_organization.profile', ['organization' => Auth::user()->nonProfitOrganization]) }}">
+                        <i class="material-icons">domain</i>
+                        <span>My Organization</span>
+                    </a>
+                </li>
+            @endif
         </ul>
     </div>
     <!-- #Menu -->

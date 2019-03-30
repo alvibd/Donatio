@@ -40,6 +40,12 @@ Route::middleware(['role:superadministrator', 'auth'])->group(function () {
 
     Route::get('/admin/advertisers', 'AdvertiserController@adminAdvertiserList')->name('admin.advertiser.list');
     Route::get('/admin/adverts', 'AdvertController@index')->name('admin.adverts.list');
+
+    Route::get('/admin/accept_request/{withdrawRequest}', 'NonProfitOrganizationController@acceptTransaction')
+        ->name('admin.non_profit_organization.accept_transaction');
+
+    Route::post('/admin/accept_request/{withdrawRequest}', 'NonProfitOrganizationController@acceptTransaction')
+        ->name('admin.non_profit_organization.submit_transaction');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -68,5 +74,12 @@ Route::middleware(['role:advertiser|superadministrator', 'auth'])->prefix('adver
 Route::middleware(['role:user|non_profit_organization', 'auth'])->group(function (){
     Route::get('/non_profit_organization/create', 'NonProfitOrganizationController@create')->name('non_profit_organization.create');
     Route::post('/non_profit_organization/create', 'NonProfitOrganizationController@create')->name('non_profit_organization.store');
-//    Route::get('/non_profit_organization/{user}', 'NonProfitOrganization@getAdvertisers')->name('advertiser.list');
+    Route::get('/transactions/{withdrawRequest}', 'NonProfitOrganizationController@viewTransactions')->name('non_profit_organization.transactions');
 });
+
+Route::middleware(['role:superadministrator|non_profit_organization', 'auth'])->prefix('non_profit_organization')
+    ->group(function (){
+        Route::get('/{organization}', 'NonProfitOrganizationController@profile')->name('non_profit_organization.profile');
+        Route::get('/{organization}/withdraw', 'NonProfitOrganizationController@withdrawMoney')->name('non_profit_organization.withdraw');
+        Route::post('/{organization}/withdraw', 'NonProfitOrganizationController@withdrawMoney')->name('non_profit_organization.withdraw_submit');
+    });

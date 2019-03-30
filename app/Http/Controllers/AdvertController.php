@@ -199,7 +199,7 @@ class AdvertController extends Controller
 
                 $advert->saveOrFail();
 
-                $transaction = $advert->advertiserTransactions()->first();
+                $transaction = $advert->advertiserTransactions()->latest()->first();
                 $transaction->status = $request->status;
                 $transaction->saveOrFail();
 

@@ -34,7 +34,8 @@
                                     <td>${{ $advert->balance/100 }}</td>
                                     <td>{{ $advert->status }}</td>
                                     <td>{{ $advert->created_at->diffForHumans() }}</td>
-                                    <td><a href="{{ route('advertiser.advert.change_status', ['advert' => $advert]) }}"
+                                    <td>
+                                        <a href="{{ route('advertiser.advert.change_status', ['advert' => $advert]) }}"
                                            class="waves-effect btn btn-primary">Process Transactions</a>
                                     </td>
                                 </tr>
