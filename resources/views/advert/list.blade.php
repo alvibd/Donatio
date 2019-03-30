@@ -28,7 +28,7 @@
                             <tbody>
                             @foreach($adverts as $advert)
                                 <tr>
-                                    <th scope="row">{{ $advertiser->id }}</th>
+                                    <th scope="row">{{ $advert->id }}</th>
                                     <td>{{ $advert->advert_name }}</td>
                                     <td>{{ $advert->view_count }}</td>
                                     <td>${{ $advert->balance/100 }}</td>

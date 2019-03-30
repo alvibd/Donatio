@@ -187,4 +187,11 @@ class NonProfitOrganizationController extends Controller
         }
         else abort(403);
     }
+
+    public function index(Request $request)
+    {
+        $organizations = NonProfitOrganization::paginate(10);
+
+        return view('ngo.list', ['organizations' => $organizations]);
+    }
 }

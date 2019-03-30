@@ -46,6 +46,8 @@ Route::middleware(['role:superadministrator', 'auth'])->group(function () {
 
     Route::post('/admin/accept_request/{withdrawRequest}', 'NonProfitOrganizationController@acceptTransaction')
         ->name('admin.non_profit_organization.submit_transaction');
+
+    Route::get('/admin/ngo/list', 'NonProfitOrganizationController@index')->name('admin.ngo.list');
 });
 
 Route::middleware(['auth'])->group(function () {

@@ -92,7 +92,13 @@
                 <li>
                     <a href="{{ route('admin.adverts.list') }}">
                         <i class="material-icons">domain</i>
-                        <span>Add Advertiser Profile</span>
+                        <span>All Adverts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.ngo.list') }}">
+                        <i class="material-icons">domain</i>
+                        <span>All NGOs</span>
                     </a>
                 </li>
             @endif
