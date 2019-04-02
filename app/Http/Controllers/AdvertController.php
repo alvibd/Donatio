@@ -156,13 +156,13 @@ class AdvertController extends Controller
 
                     $advertiser_transaction->advertiser()->associate($advert->user);
                     $advertiser_transaction->advert()->associate($advert);
-                    $advertiser_transaction->amount = $request->money;
+                    $advertiser_transaction->amount = $request->money*100;
                     $advertiser_transaction->status = AppConstant::$advert_status['approved'];
                     $advertiser_transaction->tracking_number = $this->generateRandomString(10);
 
                     $advertiser_transaction->saveOrFail();
 
-                    $advert->balance += $request->money;
+                    $advert->balance += $request->money*100;
                     $advert->saveOrFail();
                 }
 
