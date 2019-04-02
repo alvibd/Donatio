@@ -20,9 +20,4 @@ class WithdrawRequest extends Model
     {
         return $this->hasMany(WithdrawTransaction::class);
     }
-
-    public function processedBy()
-    {
-        return $this->belongsTo(User::class, 'processed_by');
-    }
 }

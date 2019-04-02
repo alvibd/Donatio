@@ -80,3 +80,21 @@
     </div>
     <!-- #END# Input -->
 @endsection
+
+
+@push('push_javascripts')
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="{{ asset('admin/plugins/jquery-countto/jquery.countTo.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.count-to').countTo();
+
+            //Sales count to
+            $('.sales-count-to').countTo({
+                formatter: function (value, options) {
+                    return '$' + value.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, ' ').replace('.', ',');
+                }
+            });
+        });
+    </script>
+@endpush

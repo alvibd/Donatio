@@ -33,6 +33,9 @@
                             <tr>
                                 <th>#</th>
                                 <th>Status</th>
+                                <th>Earning</th>
+                                <th>Tax</th>
+                                <th>Service Charge</th>
                                 <th>Created At</th>
                             </tr>
                             </thead>
@@ -41,6 +44,9 @@
                                 <tr>
                                     <th scope="row">{{ $transaction->id }}</th>
                                     <td>{{ $transaction->status }}</td>
+                                    <td>{{ $transaction->withdrawRequest->amount/100 }}</td>
+                                    <td>{{ $transaction->withdrawRequest->tax/100 }}</td>
+                                    <td>{{ $transaction->withdrawRequest->service_charge/100 }}</td>
                                     <td>{{ $withdraw->created_at->diffForHumans() }}</td>
                                 </tr>
                             @endforeach

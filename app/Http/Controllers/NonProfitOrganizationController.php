@@ -142,9 +142,16 @@ class NonProfitOrganizationController extends Controller
         else abort(403);
     }
 
+    /**
+     * @param Request $request
+     * @param WithdrawRequest $withdrawRequest
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @throws \Illuminate\Validation\ValidationException
+     * @throws \Throwable
+     */
     public function acceptTransaction(Request $request, WithdrawRequest $withdrawRequest)
     {
-        if (Auth::user()->hasRole('administrator'))
+        if (Auth::user()->hasRole('superadministrator'))
         {
             if ($request->isMethod("GET"))
             {
@@ -153,7 +160,7 @@ class NonProfitOrganizationController extends Controller
             elseif ($request->isMethod('POST'))
             {
                 $this->validate($request, [
-                   'amount' => [
+                   'service_charge' => [
                        'required',
                        'numeric',
                        function($attribute, $value, $fail) use ($withdrawRequest)
@@ -171,14 +178,19 @@ class NonProfitOrganizationController extends Controller
                 $withdrawRequest->amount -= ($request->service_charge*100 + $request->tax*100);
                 $withdrawRequest->tax = $request->tax*100;
                 $withdrawRequest->service_charge = $request->service_charge*100;
-                $withdrawRequest->processedBy()->associate(Auth::user());
                 $withdrawRequest->saveOrFail();
 
                 $transaction = new WithdrawTransaction();
                 $transaction->status = 'APPROVED';
                 $transaction->withdrawRequest()->associate($withdrawRequest);
                 $transaction->nonProfitOrganization()->associate($withdrawRequest->nonProfitOrganization);
+                $transaction->processedBy()->associate(Auth::user());
                 $transaction->saveOrFail();
+
+                $ngo = $withdrawRequest->nonProfitOrganization;
+
+                $ngo->balance -= $request->amount;
+                $ngo->saveOrFail();
 
                 Session()->flash('message', 'Successfully processed withdraw request.');
 
@@ -188,6 +200,10 @@ class NonProfitOrganizationController extends Controller
         else abort(403);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(Request $request)
     {
         $organizations = NonProfitOrganization::paginate(10);
