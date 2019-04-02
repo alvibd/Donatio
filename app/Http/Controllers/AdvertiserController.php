@@ -22,7 +22,7 @@ class AdvertiserController extends Controller
         {
             $this->validate($request, [
                 'name' => 'required|string|min:15|unique:advertisers',
-                'tin_no' => 'required|string|min:5|unique:advertisers',
+                'registration_no' => 'required|string|min:5|unique:advertisers',
                 'phone_no' => 'required|string|min:11',
                 'email' => 'required|email|unique:advertisers',
                 'address' => 'required|string|max:255'
