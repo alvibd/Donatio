@@ -189,7 +189,7 @@ class NonProfitOrganizationController extends Controller
 
                 $ngo = $withdrawRequest->nonProfitOrganization;
 
-                $ngo->balance -= $request->amount;
+                $ngo->balance -= ($withdrawRequest->amount+$withdrawRequest->tax+$withdrawRequest->service_charge);
                 $ngo->saveOrFail();
 
                 Session()->flash('message', 'Successfully processed withdraw request.');
