@@ -17,6 +17,9 @@ return [
         'advertiser' => [
             'profile' => 'r,u'
         ],
+        'user' => [
+            'profile' => 'r,u'
+        ]
     ],
     'permission_structure' => [
         'cru_user' => [

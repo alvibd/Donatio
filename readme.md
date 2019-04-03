@@ -10,11 +10,9 @@ Easy Installation
 - composer
 
 **Steps**
-- Clone this repository: `$ git clone https://github.com/alvibd/Donatio.git`
+- Clone this repository: `$ git clone https://github.com/alvibd/Donatio.git` or download zip
 - cd to project directory: `$ cd Donatio`
-- checkout to dev branch: `$ git checkout -b dev`
-- pull latest dev: `$ git pull origin dev`
-- create _.env_: `$ cp .env.example .env`
+- create _.env_: `$ cp .env.example .env` for windows : `copy .env.example .env`
 - set database configurations in _.env_
 - install all the requirements: `$ composer install`
 - generate key: `$ php artisan key:generate`
@@ -22,4 +20,5 @@ Easy Installation
 - run database seed: `$ php artisan db:seed`
 - create local storage : `$ php artisan storage:link`
 - run `$ php artisan serve` enjoy start the server and enjoy
+- the admin e-mail is `superadministrator@app.com` &amp; password `password`
 - create a virtual host to get the best experience
